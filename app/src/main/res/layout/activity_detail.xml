@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="news"
+            type="com.example.appcentnewsapp.model.News" />
+
+        <variable
+            name="viewModel"
+            type="com.example.appcentnewsapp.view.detail.DetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backImageView"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrowback"
+                android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+            <ImageView
+                android:id="@+id/favoritesImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_favorite"
+                android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+            <ImageButton
+                android:id="@+id/shareImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_share"
+                android:background="@color/white"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/favoritesImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/detailImageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:scaleType="fitXY"
+            app:imageUrl="@{news.urlToImage}"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detailImageView"
+            android:layout_alignStart="@+id/detailImageView"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="110dp"
+            android:theme="@style/ItemTitleStyle"
+            android:text="@{news.title}"
+            tools:text="abnsansmdskjhdskjkjdsk dskjhdkjshds" />
+
+
+        <ImageView
+            android:id="@+id/authorImage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/author"
+            android:layout_below="@+id/title"
+            android:layout_alignStart="@+id/title"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@{news.author}"
+            tools:text="@string/author_name"
+            android:theme="@style/SmallerTextStyle"
+            android:layout_alignStart="@+id/title"
+            android:layout_marginStart="45dp"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dp"
+            android:singleLine="false"/>
+
+        <ImageView
+            android:id="@+id/dateImage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_date"
+            android:layout_below="@+id/title"
+            android:layout_alignEnd="@+id/title"
+            android:layout_marginEnd="45dp"
+            android:layout_marginTop="10dp"
+            app:tint="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="03.08.2021"
+            app:date="@{news.date}"
+            android:theme="@style/SmallerTextStyle"
+            android:layout_alignEnd="@+id/title"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dp"/>
+        
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateImage"
+            android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{news.description}"
+                    android:theme="@style/ContentStyle"/>
+
+            </LinearLayout>
+        </ScrollView>
+        
+        <Button
+            android:id="@+id/newsLinkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_corner_radius"
+            android:text="@string/news_source"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/timesnewroman" />
+
+    </RelativeLayout>
+</layout>
